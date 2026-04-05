@@ -3,7 +3,14 @@ import numpy as np
 
 def memory_reducer(path):
     df = pd.read_csv(path)
-    
+
+    for col in df.columns:
+        if df[col].dtype == object:
+            try:
+                df[col] = pd.to_datetime(df[col])
+            except (ValueError, TypeError):
+                pass
+
     for col in df.columns:
         col_type = df[col].dtype
         
