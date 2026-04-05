@@ -13,3 +13,6 @@ __pycache__/
 *.pyc
 
 data/
+
+scripts/__pycache__
+*.pyc
