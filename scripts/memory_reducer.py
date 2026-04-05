@@ -3,18 +3,16 @@ import numpy as np
 
 def memory_reducer(path):
     df = pd.read_csv(path)
-
+    
     for col in df.columns:
         col_type = df[col].dtype
-
-        #checks if the column is numeric at all
-        if not np.issubdtype(col_type, np.number):
+        
+        if not np.issubdtype(col_type, np.number): ##checks if the column is numeric at all
             continue
-
+        
         col_min = df[col].min()
         col_max = df[col].max()
-
-    
+        
         if np.issubdtype(col_type, np.integer):
             if col_min >= np.iinfo(np.int8).min and col_max <= np.iinfo(np.int8).max:
                 df[col] = df[col].astype(np.int8)
@@ -24,5 +22,5 @@ def memory_reducer(path):
                 df[col] = df[col].astype(np.int32)
         else:
             df[col] = df[col].astype(np.float32)
+    
     return df
-
