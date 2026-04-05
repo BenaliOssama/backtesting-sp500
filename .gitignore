@@ -1,8 +1,9 @@
 # Virtual environment - ignore everything inside ex00
-ex00/*
+venv/*
 
 # Except our actual work
-!ex00/*.ipynb
+!venv/*.ipynb
+!venv/requirements.txt
 
 # Jupyter artifacts
 .ipynb_checkpoints/
