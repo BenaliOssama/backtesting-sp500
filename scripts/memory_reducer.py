@@ -3,24 +3,26 @@ import numpy as np
 
 def memory_reducer(path):
     df = pd.read_csv(path)
-
+    
     for col in df.columns:
         if df[col].dtype == object:
             try:
                 df[col] = pd.to_datetime(df[col])
             except (ValueError, TypeError):
                 pass
-
+    
     for col in df.columns:
         col_type = df[col].dtype
         
-        if not np.issubdtype(col_type, np.number): ##checks if the column is numeric at all
+        if not np.issubdtype(col_type, np.number): #checks if the column is numeric at all
             continue
-        
+
+        # Find the min and max values    
         col_min = df[col].min()
         col_max = df[col].max()
-        
-        if np.issubdtype(col_type, np.integer):
+
+        # Determine and apply the smallest datatype that can fit the range of values 
+        if np.issubdtype(col_type, np.integer): # Determine if the column can be represented by an integer
             if col_min >= np.iinfo(np.int8).min and col_max <= np.iinfo(np.int8).max:
                 df[col] = df[col].astype(np.int8)
             elif col_min >= np.iinfo(np.int16).min and col_max <= np.iinfo(np.int16).max:
