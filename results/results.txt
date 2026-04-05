@@ -1,0 +1,13 @@
+Backtesting Results
+===================
+
+Stock Picking Strategy (Top 20 momentum stocks):
+- Total PnL: 68.53$
+- Total Return: 2.18%
+
+S&P 500 Benchmark (investing 20$ each month):
+- Total PnL: 11.59$
+- Total Return: 0.32%
+
+Conclusion:
+The stock picking strategy outperformed the S&P 500 benchmark.
